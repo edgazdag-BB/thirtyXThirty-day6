@@ -1,16 +1,16 @@
 <div class="flex">
   <app-product-list
     class="list-component"
-    [productList]="productList"
+    [productList]="productService.getProductList()"
     [displayedColumns]="displayedColumns"
-    (addProduct)="addProduct()"
-    (editProduct)="updateProduct($event)"
-    (deleteProduct)="deleteProduct($event)"
+    (addProduct)="productService.addProduct()"
+    (editProduct)="productService.updateProduct($event)"
+    (deleteProduct)="productService.deleteProduct($event)"
   ></app-product-list>
-  <app-product-detail *ngIf="currentProduct !== undefined"
+  <app-product-detail *ngIf="productService.getCurrentProduct() !== undefined"
     class="detail-component"
-    [product]="currentProduct"
-    [productCategories]="productCategories"
-    (productUpdated)="updateProductDetails($event)"
+    [product]="productService.getCurrentProduct()"
+    [productCategories]="productService.getProductCategories()"
+    (productUpdated)="productService.updateProductDetails($event)"
   ></app-product-detail>
 </div>
